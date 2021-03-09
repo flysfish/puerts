@@ -3,7 +3,7 @@
 #include <algorithm>
 
 enum
-{
+{ 
     JS_ATOM_NULL_,
 #define DEF(name, str) JS_ATOM_##name,
 #include "quickjs-atom.h"
@@ -123,7 +123,8 @@ Isolate::~Isolate() {
     JS_FreeRuntime(runtime_);
 };
 
-Value* Isolate::Alloc_() {
+Value* Isolate::Alloc_() {  
+    
     if (value_alloc_pos_ == (int)values_.size()) {
         JSValue* node = new JSValue;
         *node = JS_Undefined();
