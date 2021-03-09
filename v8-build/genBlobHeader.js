@@ -4,7 +4,7 @@ const nativeBlobPerfix = "#pragma once\n\n#include <cstdint>\n\nstatic const uin
 
 const snapshotBlobPerfix = "#pragma once\n\n#include <cstdint>\n\nstatic const uint8_t SnapshotBlobCode[] = {\n";
 
-var platform = process.argv[2];
+var platform = process.argv[2];   
 
 var blobPath = process.argv[3];
 
