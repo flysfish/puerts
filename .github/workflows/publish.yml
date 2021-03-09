@@ -11,28 +11,7 @@ env:
   RUNID: 613573412
 
 jobs:
-  windows:
-    runs-on: windows-2019
 
-    steps:
-      - uses: actions/checkout@v2
-      - name: Download artifact
-        uses: dawidd6/action-download-artifact@v2
-        with:
-          workflow: build_v8.yml
-          name: v8_bin
-          path: unity/native_src/
-      - name: Build
-        run: |
-          cd unity\native_src
-          .\make_win64.bat
-          .\make_win32.bat
-      - name: Upload
-        uses: actions/upload-artifact@v2
-        with:
-          path: ./unity/Assets/Plugins/**/*
-          name: Unity_Plugins_V8
-          
   windows_qjs:
     runs-on: windows-2019
 
@@ -56,7 +35,7 @@ jobs:
           name: Unity_Plugins_Quickjs
   publish:
     runs-on: ubuntu-latest
-    needs: [windows, windows_qjs]
+    needs: [windows_qjs]
     steps:
       - uses: actions/checkout@v2
       
